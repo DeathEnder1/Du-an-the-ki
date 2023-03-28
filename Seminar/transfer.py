@@ -99,5 +99,10 @@ async def transferring(update,context):
                     """.format(receiver_num+money_to_send,receiver))
         conn.commit()
         await update.message.reply_text("Transfer completed")
+        bot_message = " お金が届いたよ !!"
+        # chatid = "6208967501"
+        send_text = 'https://api.telegram.org/bot' + keys.API_KEY + '/sendMessage?chat_id=' + receiver + '&text=' + bot_message
+        response = requests.get(send_text)
+        response.json()
         return ConversationHandler.END
     
